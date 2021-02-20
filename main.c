@@ -6,15 +6,22 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:34:46 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/19 21:27:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/20 19:48:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	testing(const char *start_conv)
+{
+	printf("%c\n",start_conv[0]);
+	return (1);
+}
+
 int	main()
 {
-	char *yo = "123.24";
-	int i = printf("%0", yo);
+	int i;
+
+	i = ft_printf(0);
 	printf("%d", i);
 }

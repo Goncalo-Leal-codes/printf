@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/19 21:27:37 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/20 19:49:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ typedef struct	s_vars
 {
 	int	i;
 	int	count;
+	int	conv_c;
 }				t_vars;
 
 int	ft_printf(const char *, ...);
+int	contains(char input, char *format_ids);
+void	start_list(t_vars *var);
+char	*ft_strdup(const char *s1);
 
 #endif
