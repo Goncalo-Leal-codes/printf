@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 19:17:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/21 21:46:08 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,63 @@ int	ft_putchar(char c)
 	return (1);
 }
 
+void	restart_fids(t_vars *var)
+{
+	var->justif_left = 0;
+	var->zero_pad = 0;
+	min_width = 0;
+	precision = 0;
+	var_str = 0;
+}
+
 void	start_list(t_vars *var)
 {
 	var->i = 0;
 	var->count = 0;
+	var->error = 0;
+	var->justif_left = 0;
+	var->zero_pad = 0;
+	min_width = 0;
+	precision = 0;
+	var_str = 0;
 }
 
-int	contains(char input, char *format_ids)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*format_ids)
+	char	*str;
+
+	str = (char *)s;
+	while (*str)
 	{
-		if (input == *format_ids)
-			return (1);
-		format_ids++;
+		if (*str == (char)c)
+			return (str);
+		str++;
 	}
+	if (*str == (char)c)
+		return (str);
 	return (0);
 }
 
-char	*ft_strdup(const char *s1)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	size;
-	char	*str;
+	int	sign;
+	int	number;
 
-	size = 0;
-	while (s1[size])
-		size++;
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (0);
-	i = 0;
-	while (s1[i])
+	sign = 1;
+	number = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
 	{
-		str[i] = s1[i];
-		i++;
+		sign *= -1;
+		str++;
 	}
-	str[i] = '\0';
-	return (str);
+	while (*str >= '0' && *str <= '9')
+	{
+		number = number * 10 + *str - '0';
+		str++;
+	}
+	return (number * sign);
 }

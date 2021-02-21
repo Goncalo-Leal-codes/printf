@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/20 19:49:00 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/21 21:45:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+# define FLAGS "-0"
+# define NBRS "0123456789"
+# define CONVS "cspdiuxX%"
+
 typedef struct	s_vars
 {
 	int	i;
 	int	count;
-	int	conv_c;
+	int error;
+	int	justif_left;
+	int zero_pad;
+	int min_width;
+	int	precision;
+	char *var_str;
+
 }				t_vars;
 
 int	ft_printf(const char *, ...);

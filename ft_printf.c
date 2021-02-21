@@ -6,44 +6,48 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:22:50 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/20 19:48:54 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/21 21:46:05 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*int	ft_print_arg(const char *input, va_list args, int *count)
+char	*get_info(va_list args, const char *input, t_vars *var)
 {
-	char *var_to_print;
+	char *str;
 
-	while()
-	return (end);
+	restart_fids(var);
+	get_flag_info(input, var);
+	get_min_width_info(args, input, var);
+	get_precision_info(args, input, var);
+	get_str(args, input, var);
+	if (var->error)
+		return (0);
+	return (str);
 }
-*/
-int	valid_conv(const char *input, t_vars var)
+
+int		valid_conv(const char *input, t_vars var)
 {
-	var.i++;
-	while (contains(input[var.i], "-0") && input[var.i])
+	while (ft_strchr(FLAGS, input[var.i])  && input[var.i])
 		var.i++;
 	if (input[var.i] == '*')
 		var.i++;
-	else if (contains(input[var.i], "0123456789")&& input[var.i])
+	else if (ft_strchr(NBRS, input[var.i]) && input[var.i])
 	{
-		while (contains(input[var.i], "0123456789"))
+		while (ft_strchr(NBRS, input[var.i]) && input[var.i])
 			var.i++;
 	}
-	if (input[var.i] == '.')
+	if (input[var.i++] == '.')
 	{
-		var.i++;
 		if (input[var.i] == '*')
 			var.i++;
-		else if (contains(input[var.i], "0123456789"))
+		else if (ft_strchr(NBRS,input[var.i]))
 		{
-			while (contains(input[var.i], "0123456789"))
+			while (ft_strchr(NBRS, input[var.i]))
 				var.i++;
 		}
 	}
-	if (contains(input[var.i], "cspdiuxX%"))
+	if (ft_strchr(CONVS, input[var.i]))
 		return (1);
 	else
 		return (0);
@@ -62,15 +66,19 @@ int		ft_printf(const char *input, ...)
 	{
 		if (input[var.i] == '%')
 		{
-			if(!valid_conv(input, var));
+			var.i++;
+			if(!valid_conv(input, var))
 				return (-1);
-			get_conv_info();
-			/*input += ft_print_arg(&input[i], args, &var);*/
+			var.var_str = get_info(args, input, &var);
+			if (var.error)
+				return (-1);
+			print_info(args, input, var);
+			if (var.var_str)
+				free(var.str);
 		}
-		/*var.count += ft_putchar(input[i]);*/
 		var.i++;
     }
-    /*va_end(args);*/
+    va_end(args);
 	return (var.count);
 }
 /*       if (*fmt == 'd') {
