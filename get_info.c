@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:21:28 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/21 21:45:50 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:53:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,20 @@ void	get_min_width_info(va_list args, const char *input, t_vars *var)
 			var->min_width = va_arg(args, int);
 			var->i++;
 	}
-	else if (ft_strchr(NBRS, input[var->i]) && input[var.i])
+	else if (ft_strchr(NBRS, input[var->i]) && input[var->i])
 	{
 		var->min_width = ft_atoi(&input[var->i]);
-		while (ft_strchr(NBRS, input[var->i]) && input[var.i])
+		while (ft_strchr(NBRS, input[var->i]) && input[var->i])
 			var->i++;
 	}
 }
 
 void	get_precision_info(va_list args, const char *input, t_vars *var)
 {
-	if (input[var.i++] == '.')
+	if (input[var->i] == '.')
 	{
-		if (input[var.i] == '*')
+		var->i++;
+		if (input[var->i] == '*')
 		{
 			var->min_width = va_arg(args, int);
 			var->i++;
@@ -52,28 +53,26 @@ void	get_precision_info(va_list args, const char *input, t_vars *var)
 		{
 			var->min_width = ft_atoi(&input[var->i]);
 			while (ft_strchr(NBRS, input[var->i]))
-			var->i++;
+				var->i++;
 		}
 	}
 }
 
-char	*get_str(va_list args, const char *input, t_vars *var)
+void	get_str(va_list args, const char *input, t_vars *var)
 {
 	char formats[1];
-	char *(*convs[1])(va_list, t_vars);
-	   	
-	formats = {'c'};
-	convs = {&ft_conv_c};
+	char *(*convs[1])(va_list, t_vars *);
 	int a;
 
-	a = 0
+	formats[0] = 'c';
+	convs[0] = &ft_conv_c;
+	a = 0;
 	while (a < 1)
 	{
-		if (input[var->i] == formats[i])
-			var->var_str = convs[i](args, *var);
+		if (input[var->i] == formats[a])
+			var->var_str = convs[a](args, var);
 		if (var->error)
-			return (0);
+			return ;
 		a++;
 	}
-	var->i++;
 }

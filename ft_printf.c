@@ -6,24 +6,21 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:22:50 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/21 21:46:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:53:42 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_info(va_list args, const char *input, t_vars *var)
+void	get_info(va_list args, const char *input, t_vars *var)
 {
-	char *str;
-
 	restart_fids(var);
 	get_flag_info(input, var);
 	get_min_width_info(args, input, var);
 	get_precision_info(args, input, var);
 	get_str(args, input, var);
 	if (var->error)
-		return (0);
-	return (str);
+		return ;
 }
 
 int		valid_conv(const char *input, t_vars var)
@@ -69,12 +66,10 @@ int		ft_printf(const char *input, ...)
 			var.i++;
 			if(!valid_conv(input, var))
 				return (-1);
-			var.var_str = get_info(args, input, &var);
+			get_info(args, input, &var);
 			if (var.error)
 				return (-1);
-			print_info(args, input, var);
-			if (var.var_str)
-				free(var.str);
+			print_info(input, &var);
 		}
 		var.i++;
     }

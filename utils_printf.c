@@ -6,25 +6,19 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 19:17:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/21 21:46:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 15:53:48 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
 void	restart_fids(t_vars *var)
 {
 	var->justif_left = 0;
 	var->zero_pad = 0;
-	min_width = 0;
-	precision = 0;
-	var_str = 0;
+	var->min_width = 0;
+	var->precision = 0;
+	var->var_str = 0;
 }
 
 void	start_list(t_vars *var)
@@ -34,9 +28,9 @@ void	start_list(t_vars *var)
 	var->error = 0;
 	var->justif_left = 0;
 	var->zero_pad = 0;
-	min_width = 0;
-	precision = 0;
-	var_str = 0;
+	var->min_width = 0;
+	var->precision = 0;
+	var->var_str = 0;
 }
 
 char	*ft_strchr(const char *s, int c)
