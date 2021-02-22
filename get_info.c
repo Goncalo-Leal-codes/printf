@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:21:28 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 15:53:40 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 20:52:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,8 @@ void	get_precision_info(va_list args, const char *input, t_vars *var)
 
 void	get_str(va_list args, const char *input, t_vars *var)
 {
-	char formats[1];
-	char *(*convs[1])(va_list, t_vars *);
-	int a;
-
-	formats[0] = 'c';
-	convs[0] = &ft_conv_c;
-	a = 0;
-	while (a < 1)
-	{
-		if (input[var->i] == formats[a])
-			var->var_str = convs[a](args, var);
-		if (var->error)
-			return ;
-		a++;
-	}
+	input[var->i] == 'c' ?  ft_conv_c(args, var) : 0;
+	input[var->i] == 's' ?  ft_conv_s(args, var) : 0;
+	if (var->error) 
+		return ;
 }

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 15:53:50 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 20:52:57 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct	s_vars
 	int min_width;
 	int	precision;
 	char *var_str;
-
 }				t_vars;
 
+int		ft_strlen(const char *s);
 int		contains(char input, char *format_ids);
 void	start_list(t_vars *var);
 void	restart_fids(t_vars *var);
@@ -44,7 +44,7 @@ char	*ft_strchr(const char *s, int c);
 void	ft_putchar_pf(char c, t_vars *var);
 void	ft_putstr_pf(char *str, t_vars *var);
 void	print_info(const char *input, t_vars *var);
-char	*ft_conv_c(va_list args, t_vars *var);
+void	ft_conv_c(va_list args, t_vars *var);
 void	get_str(va_list args, const char *input, t_vars *var);
 void	get_precision_info(va_list args, const char *input, t_vars *var);
 void	get_min_width_info(va_list args, const char *input, t_vars *var);
@@ -52,5 +52,11 @@ void	get_flag_info(const char *input, t_vars *var);
 void	get_info(va_list args, const char *input, t_vars *var);
 int		valid_conv(const char *input, t_vars var);
 int		ft_printf(const char *input, ...);
+void	ft_print_c(t_vars *var);
+void 	ft_convcpy(void (**fts)(t_vars *));
+void 	ft_convprints(void (**fts)(t_vars *));
+int		ft_strlcpy(char *dst, const char *src, int dstsize);
+void	ft_print_s(t_vars *var);
+void	ft_conv_s(va_list args, t_vars *var);
 
 #endif

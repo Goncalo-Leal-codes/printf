@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.c                                   :+:      :+:    :+:   */
+/*   ft_print_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/21 21:23:58 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 20:52:49 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/22 19:23:32 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/22 20:52:51 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_conv_s(va_list args, t_vars *var)
+void	ft_putchar_pf(char c, t_vars *var)
 {
-	var->var_str = va_arg(args, char *);
-	/* continuar aqui*/
+	write(1, &c, 1);
+	var->count++;
 }
 
-void	ft_conv_c(va_list args, t_vars *var)
+void	ft_putstr_pf(char *str, t_vars *var)
 {
-   var->var_str  = (char *)malloc(sizeof(char) * 2);
-   if (!var->var_str)
-   {
-	   var->error++;
-	   return ;
-   }
-   var->var_str[0] = va_arg(args, int);
-   var->var_str[1] = '\0';
+	while (*str)
+	{
+		ft_putchar_pf(*str, var);
+		str++;
+	}
+}
+
+void	print_info(const char *input, t_vars *var)
+{
+	input[var->i] == 'c' ? ft_print_c(var) : 0;
+	input[var->i] == 's' ? ft_print_s(var) : 0;
 }

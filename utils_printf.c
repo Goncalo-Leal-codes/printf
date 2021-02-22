@@ -6,31 +6,41 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 19:17:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 15:53:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 20:53:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	restart_fids(t_vars *var)
+int		ft_strlen(const char *s)
 {
-	var->justif_left = 0;
-	var->zero_pad = 0;
-	var->min_width = 0;
-	var->precision = 0;
-	var->var_str = 0;
+	int		i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-void	start_list(t_vars *var)
+int		ft_strlcpy(char *dst, const char *src, int dstsize)
 {
-	var->i = 0;
-	var->count = 0;
-	var->error = 0;
-	var->justif_left = 0;
-	var->zero_pad = 0;
-	var->min_width = 0;
-	var->precision = 0;
-	var->var_str = 0;
+	int	i;
+
+	i = 0;
+	if (!dst || !src)
+		return (0);
+	if (dstsize)
+	{
+		while (i < (dstsize - 1) && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	while (src[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)

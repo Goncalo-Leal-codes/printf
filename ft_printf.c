@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:22:50 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 15:53:42 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/22 20:52:45 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int		valid_conv(const char *input, t_vars var)
 		while (ft_strchr(NBRS, input[var.i]) && input[var.i])
 			var.i++;
 	}
-	if (input[var.i++] == '.')
+	if (input[var.i] == '.')
 	{
+		var.i++;
 		if (input[var.i] == '*')
 			var.i++;
 		else if (ft_strchr(NBRS,input[var.i]))
@@ -71,6 +72,8 @@ int		ft_printf(const char *input, ...)
 				return (-1);
 			print_info(input, &var);
 		}
+		else
+			ft_putchar_pf(input[var.i], &var);
 		var.i++;
     }
     va_end(args);
