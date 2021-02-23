@@ -12,7 +12,7 @@
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-NAME = libft.a
+NAME = libftprintf.a
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 

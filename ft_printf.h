@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 20:52:57 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/23 17:21:15 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_vars
 	int	justif_left;
 	int zero_pad;
 	int min_width;
+	int precision_check;
 	int	precision;
 	char *var_str;
 }				t_vars;
@@ -58,5 +59,6 @@ void 	ft_convprints(void (**fts)(t_vars *));
 int		ft_strlcpy(char *dst, const char *src, int dstsize);
 void	ft_print_s(t_vars *var);
 void	ft_conv_s(va_list args, t_vars *var);
+char	*ft_strndup_struct(char *s1, t_vars *var);
 
 #endif

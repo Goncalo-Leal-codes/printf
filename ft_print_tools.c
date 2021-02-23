@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 19:23:32 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/22 20:52:51 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/23 17:21:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_putstr_pf(char *str, t_vars *var)
 		str++;
 	}
 }
+
 
 void	print_info(const char *input, t_vars *var)
 {
