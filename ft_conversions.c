@@ -6,11 +6,19 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:23:58 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 17:21:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/23 21:01:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_conv_p(va_list args, t_vars *var)
+{
+	unsigned long	ptr_nbr;
+
+	ptr_nbr = va_arg(args, unsigned long);
+	var->var_str = ft_itoa_hex(ptr_nbr, var);
+}
 
 void	ft_conv_s(va_list args, t_vars *var)
 {

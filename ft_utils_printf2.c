@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_start_list.c                                    :+:      :+:    :+:   */
+/*   ft_utils_printf2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 17:37:36 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 17:21:23 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/23 20:39:33 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/23 21:01:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,15 @@ void	start_list(t_vars *var)
 	var->var_str = 0;
 }
 
-char	*ft_strndup_struct(char *s1, t_vars *var)
+char	*ft_itoa_hex(unsigned long ptr_nbr,t_vars *var)
 {
-	char	*str;
-
-		if (var->precision_check)
-		{
-			if (ft_strlen(s1) < var->precision)
-				var->precision = ft_strlen(s1);
-		}
-		else
-		var->precision = ft_strlen(s1);
-			str = (char *)malloc(sizeof(char) * (var->precision + 1));
-		if (!str)
-		{
-			var->error++;
-			return 0;
-		}
-		ft_strlcpy(str, s1, var->precision + 1);
-	return (str);
+	if (nb < length)
+		ft_putchar(base[nb]);
+	else
+	{
+		display((nb / length), length, base);
+		nb %= length;
+		ft_putchar(base[nb]);
+	}
 }
-
+/* continuar aqui ir buscar a strdup*/

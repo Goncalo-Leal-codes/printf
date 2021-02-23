@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:21:28 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 17:21:07 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/23 19:56:53 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	get_str(va_list args, const char *input, t_vars *var)
 {
 	input[var->i] == 'c' ?  ft_conv_c(args, var) : 0;
 	input[var->i] == 's' ?  ft_conv_s(args, var) : 0;
+	input[var->i] == 'p' ?  ft_conv_p(args, var) : 0;
+
 	if (var->error)
 		return ;
 }

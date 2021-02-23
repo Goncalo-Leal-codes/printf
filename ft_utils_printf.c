@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_printf.c                                     :+:      :+:    :+:   */
+/*   ft_utils_printf.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 19:17:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 17:21:21 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/23 20:38:56 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/23 20:40:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,26 @@ int		ft_atoi(const char *str)
 		str++;
 	}
 	return (number * sign);
+}
+
+
+char	*ft_strndup_struct(char *s1, t_vars *var)
+{
+	char	*str;
+
+		if (var->precision_check)
+		{
+			if (ft_strlen(s1) < var->precision)
+				var->precision = ft_strlen(s1);
+		}
+		else
+		var->precision = ft_strlen(s1);
+			str = (char *)malloc(sizeof(char) * (var->precision + 1));
+		if (!str)
+		{
+			var->error++;
+			return 0;
+		}
+		ft_strlcpy(str, s1, var->precision + 1);
+	return (str);
 }
