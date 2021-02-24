@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils_printf3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 12:34:46 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:44:27 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/24 20:49:54 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/24 21:43:36 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main()
+void	restart_fids(t_vars *var)
 {
-	int i;
-	int d;
-	d = 193123;
-	i = ft_printf("%20d,\n", d);
-	printf("%d", i);
+	var->justif_left = 0;
+	var->zero_pad = 0;
+	var->min_width = 0;
+	var->precision = 0;
+	var->precision_check = 0;
+	var->var_str = 0;
 }
 
-/* se precision check off precision = maior entre maximum width
- * precision e sempre no minimo tamanho do numero
- * se tiver precision aparecem zeros acima do tamanho da palavra
- * se tiver 0 sem precision fica tudo zeros
- * zero so e importante se nao houver precisao
- * */
+void	start_list(t_vars *var)
+{
+	var->i = 0;
+	var->count = 0;
+	var->error = 0;
+	var->justif_left = 0;
+	var->zero_pad = 0;
+	var->min_width = 0;
+	var->precision = 0;
+	var->precision_check = 0;
+	var->var_str = 0;
+}

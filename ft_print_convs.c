@@ -6,18 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 16:58:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 21:01:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/24 21:30:33 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_p(var)
-{
-	
-}
-
-void	ft_print_s(t_vars *var)
+void	ft_print_spd(t_vars *var)
 {
 	if (var->justif_left)
 	{

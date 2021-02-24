@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/23 17:21:15 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/24 21:42:50 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,15 @@ void	ft_print_c(t_vars *var);
 void 	ft_convcpy(void (**fts)(t_vars *));
 void 	ft_convprints(void (**fts)(t_vars *));
 int		ft_strlcpy(char *dst, const char *src, int dstsize);
-void	ft_print_s(t_vars *var);
+void	ft_print_spd(t_vars *var);
 void	ft_conv_s(va_list args, t_vars *var);
 char	*ft_strndup_struct(char *s1, t_vars *var);
+int		ft_ln_xtoa_p(unsigned long	ptr_nbr);
+char	*ft_xtoa_p(unsigned long ptr_nbr,t_vars *var, char *base);
+void	ft_conv_p(va_list args, t_vars *var);
+char	*ft_itoa(int n);
+void	ft_add_zeros(char *temp, t_vars *var);
+void	ft_conv_d(va_list args, t_vars *var);
+void	ft_strlcat1(char *dst, const char *src, size_t dstsize);
 
 #endif
