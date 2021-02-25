@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:34:46 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:44:27 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 16:02:07 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ int	main()
 	int i;
 	int d;
 	d = 193123;
-	i = ft_printf("%20d,\n", d);
+	i = ft_printf("this %d number", 0);
 	printf("%d", i);
 }
-
 /* se precision check off precision = maior entre maximum width
  * precision e sempre no minimo tamanho do numero
  * se tiver precision aparecem zeros acima do tamanho da palavra

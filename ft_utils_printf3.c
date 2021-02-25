@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:49:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:43:36 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:15:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	restart_fids(t_vars *var)
 	var->justif_left = 0;
 	var->zero_pad = 0;
 	var->min_width = 0;
-	var->precision = 0;
+	var->prec = 0;
 	var->precision_check = 0;
 	var->var_str = 0;
 }
@@ -30,7 +30,7 @@ void	start_list(t_vars *var)
 	var->justif_left = 0;
 	var->zero_pad = 0;
 	var->min_width = 0;
-	var->precision = 0;
+	var->prec = 0;
 	var->precision_check = 0;
 	var->var_str = 0;
 }

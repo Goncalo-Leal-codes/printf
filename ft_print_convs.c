@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 16:58:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:30:33 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:52:35 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_print_spd(t_vars *var)
 {
 	if (var->justif_left)
 	{
-		ft_putstr_pf(var->var_str, var);
-		if (var->min_width > var->precision)
+		if (var->var_str)
+			ft_putstr_pf(var->var_str, var);
+		if (var->min_width > var->prec)
 		{
-			while (var->min_width - var->precision)
+			while (var->min_width - var->prec)
 			{
 				ft_putchar_pf(' ', var);
 				var->min_width--;
@@ -28,14 +29,15 @@ void	ft_print_spd(t_vars *var)
 	}
 	else
 	{
-		if (var->min_width > var->precision)
+		if (var->min_width > var->prec)
 		{
-			while (var->min_width - var->precision)
+			while (var->min_width - var->prec)
 			{
 				ft_putchar_pf(' ', var);
 				var->min_width--;
 			}
 		}
+		if (var->var_str)
 		ft_putstr_pf(var->var_str, var);
 	}
 	if (var->var_str)

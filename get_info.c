@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:21:28 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 19:12:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:14:01 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	get_precision_info(va_list args, const char *input, t_vars *var)
 		var->i++;
 		if (input[var->i] == '*')
 		{
-			var->precision = va_arg(args, int);
-			if (var->precision < 0)
+			var->prec = va_arg(args, int);
+			if (var->prec < 0)
 				var->precision_check = 0;
 			var->i++;
 		}
 		else if (ft_strchr(NBRS,input[var->i]))
 		{
-			var->precision = ft_atoi(&input[var->i]);
+			var->prec = ft_atoi(&input[var->i]);
 			while (ft_strchr(NBRS, input[var->i]))
 				var->i++;
 		}

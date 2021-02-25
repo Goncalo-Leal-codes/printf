@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:42:50 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:12:54 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_vars
 	int zero_pad;
 	int min_width;
 	int precision_check;
-	int	precision;
+	int	prec;
 	char *var_str;
 }				t_vars;
 

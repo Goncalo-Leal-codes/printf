@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 20:39:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 21:42:23 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:30:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,42 @@ void	ft_strlcat1(char *dst, const char *src, size_t dstsize)
 	j = 0;
 	while (dst[i])
 		i++;
-	while (i + j + 1 < dstsize && src[j])
+	while (i + 1 < dstsize && src[j])
 	{
-		dst[i + j] = src[j];
+		if (src[j] == '-')
+			j++;
+		dst[i] = src[j];
+		i++;
 		j++;
 	}
-	dst[i + j] = '\0';
+	dst[i] = '\0';
 }
 
 void	ft_add_zeros(char *temp, t_vars *var)
 {
 	char	*str;
 	int		i;
-	
+	int		len;
+
 	i = 0;
-	str = malloc(sizeof(char) * (var->precision));
-	if (!var->var_str)
+	len = ft_strlen(temp);
+	str = malloc(sizeof(char) * (var->prec + 1));
+	if (!str)
 	{
 		var->error++;
 		return ;
 	}
-	while (var->precision - ft_strlen(temp) + i)
+	if (ft_strchr(temp, '-'))
+	{
+		str[0] = '-';
+		len--;
+		i++;
+	}
+
+	while (var->prec - len - i)
 		str[i++] = '0';
-	ft_strlcat1(str, temp, var->precision + 1);
+	str[i] = '\0';
+	ft_strlcat1(str, temp, var->prec + 1);
 	var->var_str = str;
 	free(temp);
 }
@@ -113,6 +126,6 @@ char	*ft_xtoa_p(unsigned long ptr_nbr,t_vars *var, char *base)
 		return (0);
 	}
 	free(temp);
-	var->precision = ft_strlen(str);
+	var->prec = ft_strlen(str);
 	return (str);
 }

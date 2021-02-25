@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 20:38:56 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 12:15:14 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 15:14:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,17 @@ char	*ft_strndup_struct(char *s1, t_vars *var)
 
 		if (var->precision_check)
 		{
-			if (ft_strlen(s1) < var->precision)
-				var->precision = ft_strlen(s1);
+			if (ft_strlen(s1) < var->prec)
+				var->prec = ft_strlen(s1);
 		}
 		else
-		var->precision = ft_strlen(s1);
-			str = (char *)malloc(sizeof(char) * (var->precision + 1));
+		var->prec = ft_strlen(s1);
+			str = (char *)malloc(sizeof(char) * (var->prec + 1));
 		if (!str)
 		{
 			var->error++;
 			return 0;
 		}
-		ft_strlcpy(str, s1, var->precision + 1);
+		ft_strlcpy(str, s1, var->prec + 1);
 	return (str);
 }
