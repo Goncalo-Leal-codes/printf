@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 20:38:56 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 15:14:41 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 20:43:18 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,24 +83,23 @@ int		ft_atoi(const char *str)
 	return (number * sign);
 }
 
-
 char	*ft_strndup_struct(char *s1, t_vars *var)
 {
 	char	*str;
 
-		if (var->precision_check)
-		{
-			if (ft_strlen(s1) < var->prec)
-				var->prec = ft_strlen(s1);
-		}
-		else
+	if (var->precision_check)
+	{
+		if (ft_strlen(s1) < var->prec)
+			var->prec = ft_strlen(s1);
+	}
+	else
 		var->prec = ft_strlen(s1);
-			str = (char *)malloc(sizeof(char) * (var->prec + 1));
-		if (!str)
-		{
-			var->error++;
-			return 0;
-		}
-		ft_strlcpy(str, s1, var->prec + 1);
+	str = (char *)malloc(sizeof(char) * (var->prec + 1));
+	if (!str)
+	{
+		var->error++;
+		return (0);
+	}
+	ft_strlcpy(str, s1, var->prec + 1);
 	return (str);
 }

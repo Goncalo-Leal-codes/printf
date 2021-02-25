@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 20:39:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 15:30:47 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 20:46:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_add_zeros(char *temp, t_vars *var)
 		len--;
 		i++;
 	}
-
 	while (var->prec - len - i)
 		str[i++] = '0';
 	str[i] = '\0';
@@ -82,7 +81,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-int		ft_ln_xtoa(unsigned long	ptr_nbr)
+int		ft_ln_xtoa(unsigned long ptr_nbr)
 {
 	int count;
 
@@ -97,12 +96,12 @@ int		ft_ln_xtoa(unsigned long	ptr_nbr)
 	return (count);
 }
 
-char	*ft_xtoa_p(unsigned long ptr_nbr,t_vars *var, char *base)
+char	*ft_xtoa_p(unsigned long ptr_nbr, t_vars *var, char *base)
 {
 	char	*temp;
 	char	*str;
 	int		ln;
-	
+
 	ln = ft_ln_xtoa(ptr_nbr);
 	temp = malloc(sizeof(char) * (ln + 1));
 	if (!temp)

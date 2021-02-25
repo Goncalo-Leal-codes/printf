@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:22:50 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 18:42:09 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 20:23:26 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_info(va_list args, const char *input, t_vars *var)
 
 int		valid_conv(const char *input, t_vars var)
 {
-	while (ft_strchr(FLAGS, input[var.i])  && input[var.i])
+	while (ft_strchr(FLAGS, input[var.i]) && input[var.i])
 		var.i++;
 	if (input[var.i] == '*')
 		var.i++;
@@ -39,7 +39,7 @@ int		valid_conv(const char *input, t_vars var)
 		var.i++;
 		if (input[var.i] == '*')
 			var.i++;
-		else if (ft_strchr(NBRS,input[var.i]))
+		else if (ft_strchr(NBRS, input[var.i]))
 		{
 			while (ft_strchr(NBRS, input[var.i]))
 				var.i++;
@@ -54,18 +54,18 @@ int		valid_conv(const char *input, t_vars var)
 int		ft_printf(const char *input, ...)
 {
 	t_vars	var;
-    va_list	args;
+	va_list	args;
 
 	if (!input)
 		return (0);
 	va_start(args, input);
-    start_list(&var);
-    while (input[var.i]) 
+	start_list(&var);
+	while (input[var.i])
 	{
 		if (input[var.i] == '%')
 		{
 			var.i++;
-			if(!valid_conv(input, var))
+			if (!valid_conv(input, var))
 				return (var.count);
 			get_info(args, input, &var);
 			if (var.error)
@@ -75,7 +75,7 @@ int		ft_printf(const char *input, ...)
 		else
 			ft_putchar_pf(input[var.i], &var);
 		var.i++;
-    }
-    va_end(args);
+	}
+	va_end(args);
 	return (var.count);
 }

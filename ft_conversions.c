@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/21 21:23:58 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 17:29:48 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/25 20:51:18 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/25 20:51:22 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_conv_u(va_list args, t_vars *var)
 {
-	unsigned int		n;
-	char	*temp;
-	
+	unsigned int	n;
+	char			*temp;
+
 	temp = 0;
 	n = va_arg(args, unsigned int);
 	if ((var->prec > 0 || !var->precision_check) || n)
@@ -27,24 +27,24 @@ void	ft_conv_u(va_list args, t_vars *var)
 			var->error++;
 			return ;
 		}
-	if (ft_strlen(temp) > var->prec)
-		var->prec = ft_strlen(temp);
-	if ((var->zero_pad && !var->justif_left) || var->precision_check)
-	{
-		if (var->zero_pad && !var->justif_left && !var->precision_check)
-			var->prec = var->min_width;
-		if (var->prec > ft_strlen(temp))
-			ft_add_zeros(temp, var);
+		if (ft_strlen(temp) > var->prec)
+			var->prec = ft_strlen(temp);
+		if ((var->zero_pad && !var->justif_left) || var->precision_check)
+		{
+			if (var->zero_pad && !var->justif_left && !var->precision_check)
+				var->prec = var->min_width;
+			if (var->prec > ft_strlen(temp))
+				ft_add_zeros(temp, var);
+			else
+				var->var_str = temp;
+			if (!var->var_str)
+			{
+				var->error++;
+				return ;
+			}
+		}
 		else
 			var->var_str = temp;
-		if (!var->var_str)
-		{
-			var->error++;
-			return ;
-		}
-	}
-	else
-		var->var_str = temp;
 	}
 }
 
@@ -52,7 +52,7 @@ void	ft_conv_d(va_list args, t_vars *var)
 {
 	int		n;
 	char	*temp;
-	
+
 	temp = 0;
 	n = va_arg(args, int);
 	if ((var->prec > 0 || !var->precision_check) || n)
@@ -63,26 +63,26 @@ void	ft_conv_d(va_list args, t_vars *var)
 			var->error++;
 			return ;
 		}
-	if (ft_strchr(temp, '-'))
-		var->prec++;
-	if (ft_strlen(temp) > var->prec)
-		var->prec = ft_strlen(temp);
-	if ((var->zero_pad && !var->justif_left) || var->precision_check)
-	{
-		if (var->zero_pad && !var->justif_left && !var->precision_check)
-			var->prec = var->min_width;
-		if (var->prec > ft_strlen(temp))
-			ft_add_zeros(temp, var);
+		if (ft_strchr(temp, '-'))
+			var->prec++;
+		if (ft_strlen(temp) > var->prec)
+			var->prec = ft_strlen(temp);
+		if ((var->zero_pad && !var->justif_left) || var->precision_check)
+		{
+			if (var->zero_pad && !var->justif_left && !var->precision_check)
+				var->prec = var->min_width;
+			if (var->prec > ft_strlen(temp))
+				ft_add_zeros(temp, var);
+			else
+				var->var_str = temp;
+			if (!var->var_str)
+			{
+				var->error++;
+				return ;
+			}
+		}
 		else
 			var->var_str = temp;
-		if (!var->var_str)
-		{
-			var->error++;
-			return ;
-		}
-	}
-	else
-		var->var_str = temp;
 	}
 }
 
@@ -109,7 +109,7 @@ void	ft_conv_s(va_list args, t_vars *var)
 
 void	ft_conv_c(va_list args, t_vars *var)
 {
-	var->var_str  = (char *)malloc(sizeof(char) * 2);
+	var->var_str = (char *)malloc(sizeof(char) * 2);
 	if (!var->var_str)
 	{
 		var->error++;

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 16:58:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 18:06:01 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 20:11:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_print_spd(t_vars *var)
 			}
 		}
 		if (var->var_str)
-		ft_putstr_pf(var->var_str, var);
+			ft_putstr_pf(var->var_str, var);
 	}
 	if (var->var_str)
 		free(var->var_str);
