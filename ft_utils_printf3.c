@@ -6,31 +6,89 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:49:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 15:15:17 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 16:56:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	restart_fids(t_vars *var)
+static int		ft_ln_itoau(unsigned int n)
 {
-	var->justif_left = 0;
-	var->zero_pad = 0;
-	var->min_width = 0;
-	var->prec = 0;
-	var->precision_check = 0;
-	var->var_str = 0;
+	int	ln;
+
+	ln = 0;
+	if (n == 0)
+		ln++;
+	while (n != 0)
+	{
+		ln++;
+		n /= 10;
+	}
+	return (ln);
 }
 
-void	start_list(t_vars *var)
+char			*ft_itoau(unsigned int n)
 {
-	var->i = 0;
-	var->count = 0;
-	var->error = 0;
-	var->justif_left = 0;
-	var->zero_pad = 0;
-	var->min_width = 0;
-	var->prec = 0;
-	var->precision_check = 0;
-	var->var_str = 0;
+	char	*str;
+	int		ln;
+
+	ln = ft_ln_itoau(n);
+	str = malloc(sizeof(char) * (ln + 1));
+	if (!str)
+		return (0);
+	str[ln] = '\0';
+	if (n == 0)
+		str[0] = '0';
+	while (n != 0)
+	{
+		ln--;
+		str[ln] = n % 10 + '0';
+		n /= 10;
+	}
+	return (str);
+}
+
+static int		ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+static int		ft_ln_itoad(int n)
+{
+	int	ln;
+
+	ln = 0;
+	if (n <= 0)
+		ln++;
+	while (n != 0)
+	{
+		ln++;
+		n /= 10;
+	}
+	return (ln);
+}
+
+char			*ft_itoad(int n)
+{
+	char	*str;
+	int		ln;
+
+	ln = ft_ln_itoad(n);
+	str = malloc(sizeof(char) * (ln + 1));
+	if (!str)
+		return (0);
+	str[ln] = '\0';
+	if (n < 0)
+		str[0] = '-';
+	else if (n == 0)
+		str[0] = '0';
+	while (n != 0)
+	{
+		ln--;
+		str[ln] = ft_abs(n % 10) + '0';
+		n /= 10;
+	}
+	return (str);
 }

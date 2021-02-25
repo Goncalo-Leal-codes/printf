@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:22:50 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/24 12:15:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 18:42:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_printf(const char *input, ...)
 		{
 			var.i++;
 			if(!valid_conv(input, var))
-				return (-1);
+				return (var.count);
 			get_info(args, input, &var);
 			if (var.error)
 				return (-1);
@@ -79,15 +79,3 @@ int		ft_printf(const char *input, ...)
     va_end(args);
 	return (var.count);
 }
-/*       if (*fmt == 'd') {
-            int i = va_arg(args, int);
-            printf("%d\n", i);
-        } else if (*fmt == 'c') {
-            // note automatic conversion to integral type
-            int c = va_arg(args, int);
-            printf("%c\n", c);
-        } else if (*fmt == 'f') {
-            double d = va_arg(args, double);
-            printf("%f\n", d);
-        }
-*/

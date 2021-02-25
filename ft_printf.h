@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 15:12:54 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/25 18:00:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,19 @@ int		ft_strlcpy(char *dst, const char *src, int dstsize);
 void	ft_print_spd(t_vars *var);
 void	ft_conv_s(va_list args, t_vars *var);
 char	*ft_strndup_struct(char *s1, t_vars *var);
-int		ft_ln_xtoa_p(unsigned long	ptr_nbr);
+int		ft_ln_xtoa(unsigned long	ptr_nbr);
 char	*ft_xtoa_p(unsigned long ptr_nbr,t_vars *var, char *base);
 void	ft_conv_p(va_list args, t_vars *var);
-char	*ft_itoa(int n);
+char	*ft_itoad(int n);
 void	ft_add_zeros(char *temp, t_vars *var);
 void	ft_conv_d(va_list args, t_vars *var);
 void	ft_strlcat1(char *dst, const char *src, size_t dstsize);
+char			*ft_itoau(unsigned int n);
+void	ft_conv_u(va_list args, t_vars *var);
+char	*ft_xtoa(unsigned long ptr_nbr,t_vars *var, char *base);
+void	ft_conv_x(va_list args, t_vars *var);
+void	ft_conv_ux(va_list args, t_vars *var);
+void	ft_conv_pct(t_vars *var);
+void	ft_print_pct(t_vars *var);
 
 #endif

@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.c                                   :+:      :+:    :+:   */
+/*   ft_conversions2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/21 21:23:58 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 17:29:48 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/25 16:49:56 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/25 18:00:43 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_conv_u(va_list args, t_vars *var)
+void	ft_conv_pct(t_vars *var)
+{
+	var->var_str  = (char *)malloc(sizeof(char) * 2);
+	if (!var->var_str)
+	{
+		var->error++;
+		return ;
+	}
+	var->var_str[0] = '%';
+	var->var_str[1] = '\0';
+}
+
+void	ft_conv_ux(va_list args, t_vars *var)
 {
 	unsigned int		n;
 	char	*temp;
@@ -21,7 +33,7 @@ void	ft_conv_u(va_list args, t_vars *var)
 	n = va_arg(args, unsigned int);
 	if ((var->prec > 0 || !var->precision_check) || n)
 	{
-		temp = ft_itoau(n);
+		temp = ft_xtoa(n, var, "0123456789ABCDEF");
 		if (!temp)
 		{
 			var->error++;
@@ -48,23 +60,21 @@ void	ft_conv_u(va_list args, t_vars *var)
 	}
 }
 
-void	ft_conv_d(va_list args, t_vars *var)
+void	ft_conv_x(va_list args, t_vars *var)
 {
-	int		n;
+	unsigned int		n;
 	char	*temp;
 	
 	temp = 0;
-	n = va_arg(args, int);
+	n = va_arg(args, unsigned int);
 	if ((var->prec > 0 || !var->precision_check) || n)
 	{
-		temp = ft_itoad(n);
+		temp = ft_xtoa(n, var, "0123456789abcdef");
 		if (!temp)
 		{
 			var->error++;
 			return ;
 		}
-	if (ft_strchr(temp, '-'))
-		var->prec++;
 	if (ft_strlen(temp) > var->prec)
 		var->prec = ft_strlen(temp);
 	if ((var->zero_pad && !var->justif_left) || var->precision_check)
@@ -84,37 +94,4 @@ void	ft_conv_d(va_list args, t_vars *var)
 	else
 		var->var_str = temp;
 	}
-}
-
-void	ft_conv_p(va_list args, t_vars *var)
-{
-	unsigned long	ptr_nbr;
-
-	ptr_nbr = va_arg(args, unsigned long);
-	var->var_str = ft_xtoa_p(ptr_nbr, var, "0123456789abcdef");
-	if (!var->var_str)
-		return ;
-}
-
-void	ft_conv_s(va_list args, t_vars *var)
-{
-	char *str;
-
-	str = va_arg(args, char *);
-	if (!str)
-		var->var_str = ft_strndup_struct("(null)", var);
-	else
-		var->var_str = ft_strndup_struct(str, var);
-}
-
-void	ft_conv_c(va_list args, t_vars *var)
-{
-	var->var_str  = (char *)malloc(sizeof(char) * 2);
-	if (!var->var_str)
-	{
-		var->error++;
-		return ;
-	}
-	var->var_str[0] = va_arg(args, int);
-	var->var_str[1] = '\0';
 }
