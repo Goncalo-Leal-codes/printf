@@ -2,6 +2,8 @@
 
 function that recreates the standard library printf (conversions (cspdiuxX%) flags(-O.*)).
 
+Final Grade: 100/115 (mandatory part only)
+
 Overview:
 
 1 - Initialize "var" variable to be used with the va_arg and va_end macros
