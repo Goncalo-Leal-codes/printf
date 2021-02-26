@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:49:56 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 20:11:04 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/26 16:09:22 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_conv_ux(va_list args, t_vars *var)
 	unsigned int	n;
 	char			*temp;
 
-	temp = 0;
 	n = va_arg(args, unsigned int);
 	if ((var->prec > 0 || !var->precision_check) || n)
 	{
@@ -39,24 +38,9 @@ void	ft_conv_ux(va_list args, t_vars *var)
 			var->error++;
 			return ;
 		}
-		if (ft_strlen(temp) > var->prec)
-			var->prec = ft_strlen(temp);
-		if ((var->zero_pad && !var->justif_left) || var->precision_check)
-		{
-			if (var->zero_pad && !var->justif_left && !var->precision_check)
-				var->prec = var->min_width;
-			if (var->prec > ft_strlen(temp))
-				ft_add_zeros(temp, var);
-			else
-				var->var_str = temp;
-			if (!var->var_str)
-			{
-				var->error++;
-				return ;
-			}
-		}
-		else
-			var->var_str = temp;
+		ft_minus_zeropad(var, temp);
+		if (var->error)
+			return ;
 	}
 }
 
@@ -65,7 +49,6 @@ void	ft_conv_x(va_list args, t_vars *var)
 	unsigned int	n;
 	char			*temp;
 
-	temp = 0;
 	n = va_arg(args, unsigned int);
 	if ((var->prec > 0 || !var->precision_check) || n)
 	{
@@ -75,23 +58,8 @@ void	ft_conv_x(va_list args, t_vars *var)
 			var->error++;
 			return ;
 		}
-		if (ft_strlen(temp) > var->prec)
-			var->prec = ft_strlen(temp);
-		if ((var->zero_pad && !var->justif_left) || var->precision_check)
-		{
-			if (var->zero_pad && !var->justif_left && !var->precision_check)
-				var->prec = var->min_width;
-			if (var->prec > ft_strlen(temp))
-				ft_add_zeros(temp, var);
-			else
-				var->var_str = temp;
-			if (!var->var_str)
-			{
-				var->error++;
-				return ;
-			}
-		}
-		else
-			var->var_str = temp;
+		ft_minus_zeropad(var, temp);
+		if (var->error)
+			return ;
 	}
 }

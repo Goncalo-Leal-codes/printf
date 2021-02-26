@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 20:39:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 20:46:21 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/26 17:10:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,9 @@ char	*ft_xtoa_p(unsigned long ptr_nbr, t_vars *var, char *base)
 
 	ln = ft_ln_xtoa(ptr_nbr);
 	temp = malloc(sizeof(char) * (ln + 1));
-	if (!temp)
-	{
-		var->error++;
+	ft_protect_mal(var, temp);
+	if (var->error)
 		return (0);
-	}
 	temp[ln] = '\0';
 	if (ptr_nbr == 0)
 		temp[0] = '0';
@@ -119,11 +117,9 @@ char	*ft_xtoa_p(unsigned long ptr_nbr, t_vars *var, char *base)
 		ptr_nbr /= 16;
 	}
 	str = ft_strjoin("0x", temp);
-	if (!str)
-	{
-		var->error++;
+	ft_protect_mal(var, str);
+	if (var->error)
 		return (0);
-	}
 	free(temp);
 	var->prec = ft_strlen(str);
 	return (str);

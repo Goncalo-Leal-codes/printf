@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 20:36:40 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/26 17:11:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct	s_vars
 	char	*var_str;
 }				t_vars;
 
+void			ft_protect_mal(t_vars *var, char *str);
+void			ft_minus_zeropad(t_vars *var, char *temp);
+void			ft_putzeros(t_vars *var, int n);
+void			ft_putspaces(t_vars *var, int n);
 int				ft_strlen(const char *s);
 int				contains(char input, char *format_ids);
 void			start_list(t_vars *var);

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 20:51:18 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 20:51:22 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/26 16:56:48 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,9 @@ void	ft_conv_u(va_list args, t_vars *var)
 			var->error++;
 			return ;
 		}
-		if (ft_strlen(temp) > var->prec)
-			var->prec = ft_strlen(temp);
-		if ((var->zero_pad && !var->justif_left) || var->precision_check)
-		{
-			if (var->zero_pad && !var->justif_left && !var->precision_check)
-				var->prec = var->min_width;
-			if (var->prec > ft_strlen(temp))
-				ft_add_zeros(temp, var);
-			else
-				var->var_str = temp;
-			if (!var->var_str)
-			{
-				var->error++;
-				return ;
-			}
-		}
-		else
-			var->var_str = temp;
+		ft_minus_zeropad(var, temp);
+		if (var->error)
+			return ;
 	}
 }
 
@@ -65,24 +50,9 @@ void	ft_conv_d(va_list args, t_vars *var)
 		}
 		if (ft_strchr(temp, '-'))
 			var->prec++;
-		if (ft_strlen(temp) > var->prec)
-			var->prec = ft_strlen(temp);
-		if ((var->zero_pad && !var->justif_left) || var->precision_check)
-		{
-			if (var->zero_pad && !var->justif_left && !var->precision_check)
-				var->prec = var->min_width;
-			if (var->prec > ft_strlen(temp))
-				ft_add_zeros(temp, var);
-			else
-				var->var_str = temp;
-			if (!var->var_str)
-			{
-				var->error++;
-				return ;
-			}
-		}
-		else
-			var->var_str = temp;
+		ft_minus_zeropad(var, temp);
+		if (var->error)
+			return ;
 	}
 }
 

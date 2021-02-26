@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 16:58:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/02/25 20:11:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/02/26 15:21:08 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,16 @@ void	ft_print_pct(t_vars *var)
 	{
 		ft_putchar_pf(var->var_str[0], var);
 		if (var->min_width > 1)
-		{
-			while (var->min_width - 1)
-			{
-				ft_putchar_pf(' ', var);
-				var->min_width--;
-			}
-		}
+			ft_putspaces(var, 1);
 	}
 	else
 	{
 		if (var->min_width > 1)
 		{
 			if (var->zero_pad)
-			{
-				while (var->min_width - 1)
-				{
-					ft_putchar_pf('0', var);
-					var->min_width--;
-				}
-			}
+				ft_putzeros(var, 1);
 			else
-			{
-				while (var->min_width - 1)
-				{
-					ft_putchar_pf(' ', var);
-					var->min_width--;
-				}
-			}
+				ft_putspaces(var, 1);
 		}
 		ft_putchar_pf(var->var_str[0], var);
 	}
@@ -60,24 +42,12 @@ void	ft_print_spd(t_vars *var)
 		if (var->var_str)
 			ft_putstr_pf(var->var_str, var);
 		if (var->min_width > var->prec)
-		{
-			while (var->min_width - var->prec)
-			{
-				ft_putchar_pf(' ', var);
-				var->min_width--;
-			}
-		}
+			ft_putspaces(var, var->prec);
 	}
 	else
 	{
 		if (var->min_width > var->prec)
-		{
-			while (var->min_width - var->prec)
-			{
-				ft_putchar_pf(' ', var);
-				var->min_width--;
-			}
-		}
+			ft_putspaces(var, var->prec);
 		if (var->var_str)
 			ft_putstr_pf(var->var_str, var);
 	}
@@ -91,24 +61,12 @@ void	ft_print_c(t_vars *var)
 	{
 		ft_putchar_pf(var->var_str[0], var);
 		if (var->min_width > 1)
-		{
-			while (var->min_width - 1)
-			{
-				ft_putchar_pf(' ', var);
-				var->min_width--;
-			}
-		}
+			ft_putspaces(var, 1);
 	}
 	else
 	{
 		if (var->min_width > 1)
-		{
-			while (var->min_width - 1)
-			{
-				ft_putchar_pf(' ', var);
-				var->min_width--;
-			}
-		}
+			ft_putspaces(var, 1);
 		ft_putchar_pf(var->var_str[0], var);
 	}
 	if (var->var_str)
