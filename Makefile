@@ -6,14 +6,15 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/02/26 14:18:20 by gleal            ###   ########.fr        #
+#    Updated: 2021/02/26 17:47:50 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-SRCS = $(wildcard *.c)
+SRCS = ft_conversions.c ft_conversions2.c ft_print_convs.c ft_print_tools.c ft_printf.c \
+	   ft_utils_printf.c ft_utils_printf2.c ft_utils_printf3.c ft_utils_printf4.c get_info.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
